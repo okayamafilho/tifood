@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.0"
+easyvalidationCore = "1.0.4"
 firebaseBom = "33.1.1"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
@@ -11,15 +12,18 @@ material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 gs = "4.4.2"
+masked = "5.0.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+easyvalidation-core = { module = "com.wajahatkarim:easyvalidation-core", version.ref = "easyvalidationCore" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics"}
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx"}
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx"}
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx"}
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+masked-edittext = { group = "io.github.vicmikhailau", name = "MaskedEditText", version.ref = "masked" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
