@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import br.com.okayamafilho.tifood.databinding.ActivityCadastroBinding
 import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
+import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 
 class CadastroActivity : AppCompatActivity() {
@@ -34,20 +35,23 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun inicializarEventosClique() {
-        with(binding) {
-            btnCadastrar.setOnClickListener {
-                val nome = editCadastroNome.text.toString()
-                val email = editCadastroEmail.text.toString()
-                val senha = editCadastroSenha.text.toString()
-                val telefone = editCadastroTelefone.text.toString()
-
-                val valNome = nome.validator()
-                    .nonEmpty()
-                    .minLength(6)
-                    .check()
-
-            }
-        }
+//        with(binding) {
+//            btnCadastrar.setOnClickListener {
+//                val nome = editCadastroNome.text.toString()
+//                val email = editCadastroEmail.text.toString()
+//                val senha = editCadastroSenha.text.toString()
+//                val telefone = editCadastroTelefone.text.toString()
+//
+//                val valNome = nome.validator()
+//                    .nonEmpty()
+//                    .minLength(6)
+//                    .check()
+//
+//                val valEmail = email.validator()
+//                    .validEmail()
+//                    .check()
+//            }
+//        }
     }
 
     private fun inicializarToolbar() {

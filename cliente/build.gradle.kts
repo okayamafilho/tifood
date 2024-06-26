@@ -41,7 +41,7 @@ android {
 
 dependencies {
 
-    val ev_version = "1.0.4"
+
     implementation (libs.easyvalidation.core)
 
     //Dependências Firebase
