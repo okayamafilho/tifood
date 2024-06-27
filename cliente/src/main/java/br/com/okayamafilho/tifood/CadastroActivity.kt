@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.com.okayamafilho.core.exibirMensagem
 import br.com.okayamafilho.tifood.databinding.ActivityCadastroBinding
 import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
 import br.com.okayamafilho.tifood.domain.model.Usuario
@@ -53,10 +54,10 @@ class CadastroActivity : AppCompatActivity() {
 
         autenticacaoViewModel.sucesso.observe(this) { sucesso ->
             if (sucesso) {
-                Toast.makeText(this, "Cadastro realizado com sucesso", Toast.LENGTH_LONG).show()
+                exibirMensagem("Cadastro realizado com sucesso")
                 navegarTelaPrincipal()
             } else {
-                Toast.makeText(this, "Erro ao realizar cadastro", Toast.LENGTH_LONG).show()
+                exibirMensagem("Erro ao realizar cadastro")
             }
         }
 

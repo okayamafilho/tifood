@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.com.okayamafilho.core.exibirMensagem
 import br.com.okayamafilho.tifood.databinding.ActivityLoginBinding
 import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
 import br.com.okayamafilho.tifood.domain.model.Usuario
@@ -58,10 +59,10 @@ class LoginActivity : AppCompatActivity() {
 
         autenticacaoViewModel.sucesso.observe(this) { sucesso ->
             if (sucesso) {
-                Toast.makeText(this, "Login realizado com sucesso", Toast.LENGTH_LONG).show()
+                exibirMensagem("Login realizado com sucesso")
                 navegarTelaPrincipal()
             } else {
-                Toast.makeText(this, "Erro ao logar usuário", Toast.LENGTH_LONG).show()
+                exibirMensagem("Erro ao logar usuário")
             }
         }
 

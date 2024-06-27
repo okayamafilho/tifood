@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TIfood"
 include(":cliente")
- 
+include(":core")
