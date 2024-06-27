@@ -1,7 +1,9 @@
 package br.com.okayamafilho.tifood
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -43,7 +45,21 @@ class CadastroActivity : AppCompatActivity() {
         inicializarObservaveis()
     }
 
+    fun navegarTelaPrincipal() {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.sucesso.observe(this) { sucesso ->
+            if (sucesso) {
+                Toast.makeText(this, "Cadastro realizado com sucesso", Toast.LENGTH_LONG).show()
+                navegarTelaPrincipal()
+            } else {
+                Toast.makeText(this, "Erro ao realizar cadastro", Toast.LENGTH_LONG).show()
+            }
+        }
+
         autenticacaoViewModel.resultadoValidacao.observe(this) { resultadoValidacao ->
             with(binding) {
                 editCadastroNome.error =

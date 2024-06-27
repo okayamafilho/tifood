@@ -7,4 +7,10 @@ data class ResultadoValidacao(
     var telefone: Boolean = false
 
 ) {
+    val sucessoValidacaoCadastro: Boolean
+        get() = nome && email && senha && telefone
+
+    val sucessoValidacaoLogin: Boolean
+        get() = email && senha
+
 }
