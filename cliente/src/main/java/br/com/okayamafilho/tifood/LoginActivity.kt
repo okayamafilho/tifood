@@ -13,6 +13,7 @@ import br.com.okayamafilho.tifood.databinding.ActivityLoginBinding
 import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
 import br.com.okayamafilho.tifood.domain.model.Usuario
 import br.com.okayamafilho.tifood.presentation.viewmodel.AutenticacaoViewModel
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +29,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         inicializar()
+//        FirebaseAuth.getInstance().signOut()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        autenticacaoViewModel.verificarUsuarioLogado()
+
     }
 
     private fun inicializar() {
@@ -56,6 +64,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.usuarioEstaLogado.observe(this) { usuarioEstaLogado ->
+            if (usuarioEstaLogado) {
+                navegarTelaPrincipal()
+            }
+        }
 
         autenticacaoViewModel.sucesso.observe(this) { sucesso ->
             if (sucesso) {

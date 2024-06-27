@@ -4,6 +4,7 @@ import br.com.okayamafilho.tifood.domain.model.Usuario
 import com.google.protobuf.Internal.BooleanList
 
 interface IAutenticacaoRepository {
-    suspend fun  cadastrarUsuario(usuario: Usuario) : Boolean
-    suspend fun  logarUsuario(usuario: Usuario) : Boolean
+    suspend fun cadastrarUsuario(usuario: Usuario): Boolean
+    suspend fun logarUsuario(usuario: Usuario) : Boolean
+    suspend fun verificarUsuarioLogado(): Boolean
 }

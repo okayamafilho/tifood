@@ -27,6 +27,10 @@ class AutenticacaoViewModel @Inject constructor(
     val sucesso: LiveData<Boolean>
         get() = _sucesso
 
+    private val _usuarioEstaLogado = MutableLiveData<Boolean>()
+    val usuarioEstaLogado: LiveData<Boolean>
+        get() = _usuarioEstaLogado
+
     fun cadastrarUsuario(usuario: Usuario) {
         val retornoValidacao = autenticacaoUseCase.validarCadastroUsuario(usuario)
         _resultadoValidacao.value = retornoValidacao
@@ -50,6 +54,13 @@ class AutenticacaoViewModel @Inject constructor(
                 val retorno = autenticacaoRepositoryImpl.logarUsuario(usuario)
                 _sucesso.postValue(retorno)
             }
+        }
+    }
+
+    fun verificarUsuarioLogado() {
+        viewModelScope.launch {
+            val retorno = autenticacaoRepositoryImpl.verificarUsuarioLogado()
+            _usuarioEstaLogado.postValue(retorno)
         }
     }
 }
