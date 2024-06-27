@@ -3,5 +3,10 @@
     <string name="entrar">Entrar</string>
     <string name="cadastrar">Cadastra-se</string>
     <string name="digiteseuemail">Digite seu e-mail</string>
-    <string name="digitesuasenha">Digite sua senha\t</string>
+    <string name="digitesuasenha">Digite sua senha</string>
+
+    <string name="erro_cadastro_nome">Digite um nome válido, com no mínimo 06 letras</string>
+    <string name="erro_cadastro_email">Digite um email válido</string>
+    <string name="erro_cadastro_senha">Digite um senha válido, com no mínimo 06 caracteres</string>
+    <string name="erro_cadastro_telefone">Digite um telefone válido</string>
 </resources>
