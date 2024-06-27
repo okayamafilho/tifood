@@ -2,21 +2,16 @@ package br.com.okayamafilho.tifood
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.com.okayamafilho.core.AlertaCarregamento
 import br.com.okayamafilho.core.exibirMensagem
 import br.com.okayamafilho.tifood.databinding.ActivityCadastroBinding
-import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
 import br.com.okayamafilho.tifood.domain.model.Usuario
 import br.com.okayamafilho.tifood.presentation.viewmodel.AutenticacaoViewModel
-import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
-import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
-import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +21,12 @@ class CadastroActivity : AppCompatActivity() {
         ActivityCadastroBinding.inflate(layoutInflater)
     }
 
+    private val alertaCarregamento by lazy {
+        AlertaCarregamento(this)
+    }
+
     private val autenticacaoViewModel: AutenticacaoViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +51,14 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.sucesso.observe(this) { carregando ->
+            if (carregando) {
+                alertaCarregamento.exibir("Fazendo seu cadastro")
+            } else {
+                alertaCarregamento.fechar()
+            }
+        }
 
         autenticacaoViewModel.sucesso.observe(this) { sucesso ->
             if (sucesso) {

@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.com.okayamafilho.core.AlertaCarregamento
 import br.com.okayamafilho.core.exibirMensagem
 import br.com.okayamafilho.tifood.databinding.ActivityLoginBinding
 import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
@@ -21,6 +22,10 @@ class LoginActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
+    }
+
+    private val alertaCarregamento by lazy {
+        AlertaCarregamento(this)
     }
 
     private val autenticacaoViewModel: AutenticacaoViewModel by viewModels()
@@ -64,6 +69,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.sucesso.observe(this) { carregando ->
+            if (carregando) {
+                alertaCarregamento.exibir("Efetuando Login")
+            } else {
+                alertaCarregamento.fechar()
+            }
+        }
 
         autenticacaoViewModel.usuarioEstaLogado.observe(this) { usuarioEstaLogado ->
             if (usuarioEstaLogado) {
