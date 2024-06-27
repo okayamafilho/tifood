@@ -28,7 +28,7 @@ class AutenticacaoViewModel @Inject constructor(
         get() = _sucesso
 
     fun cadastrarUsuario(usuario: Usuario) {
-        val  retornoValidacao = autenticacaoUseCase.validarCadastroUsuario(usuario)
+        val retornoValidacao = autenticacaoUseCase.validarCadastroUsuario(usuario)
         _resultadoValidacao.value = retornoValidacao
         //Verificar os dados do usuario
         //Cadastro do usuario
@@ -41,9 +41,15 @@ class AutenticacaoViewModel @Inject constructor(
     }
 
     fun logarUsuario(usuario: Usuario) {
-        val  retornoValidacao = autenticacaoUseCase.validarLoginUsuario(usuario)
+        val retornoValidacao = autenticacaoUseCase.validarLoginUsuario(usuario)
         _resultadoValidacao.value = retornoValidacao
         //Verificar os dados do usuario
         //Cadastro do usuario
+        if (retornoValidacao.sucessoValidacaoLogin) {
+            viewModelScope.launch {
+                val retorno = autenticacaoRepositoryImpl.logarUsuario(usuario)
+                _sucesso.postValue(retorno)
+            }
+        }
     }
 }

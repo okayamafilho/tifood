@@ -13,4 +13,11 @@ class AutenticacaoRepositoryImpl @Inject constructor(
             usuario.email, usuario.senha
         ).await() != null
     }
+
+    override suspend fun logarUsuario(usuario: Usuario): Boolean {
+        return firebaseAuth.signInWithEmailAndPassword(
+            usuario.email, usuario.senha
+        ).await() != null
+    }
+
 }

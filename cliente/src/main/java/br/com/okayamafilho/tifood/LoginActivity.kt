@@ -2,6 +2,7 @@ package br.com.okayamafilho.tifood
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -42,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
             btnLogar.setOnClickListener {
                 val email = editLoginEmail.text.toString()
                 val senha = editLoginSenha.text.toString()
-
                 val usuario = Usuario(email, senha)
 
                 autenticacaoViewModel.logarUsuario(usuario)
@@ -50,7 +50,21 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    fun navegarTelaPrincipal() {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.sucesso.observe(this) { sucesso ->
+            if (sucesso) {
+                Toast.makeText(this, "Login realizado com sucesso", Toast.LENGTH_LONG).show()
+                navegarTelaPrincipal()
+            } else {
+                Toast.makeText(this, "Erro ao logar usuário", Toast.LENGTH_LONG).show()
+            }
+        }
+
         autenticacaoViewModel.resultadoValidacao.observe(this) { resultadoValidacao ->
             with(binding) {
                 editLoginEmail.error =
@@ -60,5 +74,4 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
 }

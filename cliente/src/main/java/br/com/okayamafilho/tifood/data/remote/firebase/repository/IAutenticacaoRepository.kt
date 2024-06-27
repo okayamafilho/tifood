@@ -5,4 +5,5 @@ import com.google.protobuf.Internal.BooleanList
 
 interface IAutenticacaoRepository {
     suspend fun  cadastrarUsuario(usuario: Usuario) : Boolean
+    suspend fun  logarUsuario(usuario: Usuario) : Boolean
 }
