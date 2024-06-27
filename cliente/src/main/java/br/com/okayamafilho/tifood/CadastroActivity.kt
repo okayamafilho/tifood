@@ -1,6 +1,7 @@
 package br.com.okayamafilho.tifood
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,7 +11,9 @@ import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CadastroActivity : AppCompatActivity() {
 
     private val binding by lazy {
@@ -35,23 +38,37 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun inicializarEventosClique() {
-//        with(binding) {
-//            btnCadastrar.setOnClickListener {
-//                val nome = editCadastroNome.text.toString()
-//                val email = editCadastroEmail.text.toString()
-//                val senha = editCadastroSenha.text.toString()
-//                val telefone = editCadastroTelefone.text.toString()
-//
-//                val valNome = nome.validator()
-//                    .nonEmpty()
-//                    .minLength(6)
-//                    .check()
-//
-//                val valEmail = email.validator()
-//                    .validEmail()
-//                    .check()
-//            }
-//        }
+        with(binding) {
+            btnCadastrar.setOnClickListener {
+                val nome = editCadastroNome.text.toString()
+                val email = editCadastroEmail.text.toString()
+                val senha = editCadastroSenha.text.toString()
+                val telefone = editCadastroTelefone.text.toString()
+
+                val valNome = nome.validator()
+                    .nonEmpty()
+                    .minLength(6)
+                    .check()
+
+                val valEmail = email.validator()
+                    .validEmail()
+                    .check()
+
+                val valSenha = senha.validator()
+                    .minLength(6)
+                    .check()
+
+                val valTelefone = telefone.validator()
+                    .minLength(14)
+                    .check()
+
+                Log.i(
+                    "validacao",
+                    "nome:($valNome) email:($valEmail)  senha:($valSenha) telefone($valTelefone) "
+                )
+
+            }
+        }
     }
 
     private fun inicializarToolbar() {

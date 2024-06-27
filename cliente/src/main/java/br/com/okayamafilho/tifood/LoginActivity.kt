@@ -8,7 +8,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.com.okayamafilho.tifood.databinding.ActivityLoginBinding
 import br.com.okayamafilho.tifood.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private val binding by lazy {

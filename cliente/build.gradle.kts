@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.gms.google-services")
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.daggerHilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,8 +43,24 @@ android {
 
 dependencies {
 
+    //Kotlin ktx
+    implementation(libs.androidx.core.ktx)
 
-    implementation (libs.easyvalidation.core)
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+    //Arquitetura 
+    implementation(libs.easyvalidation.core)
 
     //Dependências Firebase
     implementation(libs.masked.edittext)
@@ -63,4 +81,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+kapt {
+    correctErrorTypes = true
 }

@@ -2,26 +2,35 @@
 agp = "8.5.0"
 easyvalidationCore = "1.0.4"
 firebaseBom = "33.1.1"
+hiltAndroid = "2.50"
+hiltAndroidCompiler = "2.50"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.2.0"
-espressoCore = "3.6.0"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
 appcompat = "1.7.0"
+lifecycleViewmodelKtx = "2.8.2"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 gs = "4.4.2"
 masked = "5.0.2"
+hilt = "2.50"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 easyvalidation-core = { module = "com.wajahatkarim:easyvalidation-core", version.ref = "easyvalidationCore" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics"}
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx"}
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx"}
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx"}
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 masked-edittext = { group = "io.github.vicmikhailau", name = "MaskedEditText", version.ref = "masked" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -35,4 +44,5 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 googleServices = { id = "com.google.gms.google-services", version.ref = "gs" }
+daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
